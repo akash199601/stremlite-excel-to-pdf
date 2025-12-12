@@ -1,12 +1,20 @@
 import streamlit as st
-import win32com.client as win32
-import pythoncom
 import os
+import sys
 import tempfile
 import zipfile
 import shutil
 import re
 from io import BytesIO
+
+# Check if running on Windows
+if sys.platform != 'win32':
+    st.error("❌ **This app only works on Windows** (requires Microsoft Excel + pywin32)")
+    st.info("To use this app:\n1. Run it locally on your Windows machine\n2. Or deploy to a Windows VPS/Server")
+    st.stop()
+
+import win32com.client as win32
+import pythoncom
 
 st.title("📄 Fast Excel to PDF Converter (No Poppler, No Extra Tools)")
 st.write("Upload one or more Excel files. Each sheet will be converted into a separate PDF.")

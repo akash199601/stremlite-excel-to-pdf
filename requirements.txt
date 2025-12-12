@@ -1,2 +1,2 @@
 streamlit==1.32.0
-pywin32==306
+pywin32==306; sys_platform == 'win32'
